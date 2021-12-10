@@ -1,40 +1,44 @@
 import axios from "axios";
 
-export const SMURF_START = "SMURF_START";
-export const SMURF_SUCCESS = "SMURF_SUCCESS";
-export const ADD_SMURF = "ADD_SMURF";
-export const SMURF_FAIL = "SMURF_FAIL";
+export const FETCH_START = "FETCH_START";
+export const FETCH_SUCCESS = "FETCH_SUCCESS";
+export const FETCH_FAIL = "FETCH_FAIL";
+export const ADD_SMURFS = "ADD_SMURFS";
+export const ERROR = "ERROR";
 
-export const fetchSmurfs = () => (dispatch) => {
-  dispatch({ type: SMURF_START });
-  axios
-    .get("http://localhost:3333/smurfs")
-    .then((res) => {
-      dispatch({ type: SMURF_SUCCESS, payload: res.data });
-    })
-    .catch((err) => {
-      dispatch({ type: SMURF_FAIL, payload: err });
-    });
+export const fetchSmurfs = () => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+
+    axios
+      .get("http://localhost:3333/smurfs")
+      .then((res) => {
+        dispatch(fetchSuccess(res.data));
+      })
+      .catch((err) => {
+        dispatch(fetchFail("Couldn't get the info"));
+      });
+  };
 };
 
-export const addSmurf = (smurf) => (dispatch) => {
-  if (smurf.name === "" || smurf.nickname === "" || smurf.position === "") {
-    dispatch({
-      type: SMURF_FAIL,
-      payload: "Name, Position and Nickname are required fields.",
-    });
-    return;
-  }
+export const fetchStart = () => {
+  return { type: FETCH_START };
+};
 
-  dispatch({ type: SMURF_START });
-  axios
-    .post("http://localhost:3333/smurfs", smurf)
-    .then((res) => {
-      dispatch({ type: ADD_SMURF, payload: smurf });
-    })
-    .catch((err) => {
-      dispatch({ type: SMURF_FAIL, payload: err.response.data.Error });
-    });
+export const fetchSuccess = (smurfs) => {
+  return { type: FETCH_SUCCESS, payload: smurfs };
+};
+
+export const fetchFail = (error) => {
+  return { type: FETCH_FAIL, payload: error };
+};
+
+export const addSmurfs = (smurfs) => {
+  return { type: ADD_SMURFS, payload: smurfs };
+};
+
+export const errorMessage = (error) => {
+  return { type: ERROR, payload: error };
 };
 
 //Task List:

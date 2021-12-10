@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
 import { addSmurfs, errorMessage } from "../actions";
+import { connect } from "react-redux";
 
 const AddForm = (props) => {
   const [state, setState] = useState({
@@ -9,9 +9,6 @@ const AddForm = (props) => {
     nickname: "",
     description: "",
   });
-
-  //remove when error state is added
-  const errorMessage = state.errorMessage;
 
   const handleChange = (e) => {
     setState({
@@ -24,7 +21,6 @@ const AddForm = (props) => {
     e.preventDefault();
     if (state.name === "" || state.position === "" || state.nickname === "") {
       props.errorMessage("Name, position and nickname fields are required.");
-
       //dispatch a custom error action
     } else {
       props.addSmurfs(state);
