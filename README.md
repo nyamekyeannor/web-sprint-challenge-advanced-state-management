@@ -106,12 +106,14 @@ Connect this component to your smurfs and loading screen state slices.
 
 ### Complete components/AddForm.js
 
+(\*This has been completed\*\*\*)
+
 Connect this component to the error state slice, setError and addSmurf actions. Complete the form handling code.
 
-- [ ] Connect your error state slice, setError and addSmurf actions to the AddForm component.
-- [ ] Replace all instances of the errorMessage static variable with your error message state slice.
-- [ ] Within the handleSubmit function, replace the static assignment to errorMessage with a call to the setError action. Test that an error is displayed when validation code fails.
-- [ ] Within the handleSubmit function, call your addSmurf action with the smurf name, position, nickname and summery passed as arguments. Test that a smurf is correctly added to when the form is submitted.
+- [x] Connect your error state slice, setError and addSmurf actions to the AddForm component.
+- [x] Replace all instances of the errorMessage static variable with your error message state slice.
+- [x] Within the handleSubmit function, replace the static assignment to errorMessage with a call to the setError action. Test that an error is displayed when validation code fails.
+- [x] Within the handleSubmit function, call your addSmurf action with the smurf name, position, nickname and summery passed as arguments. Test that a smurf is correctly added to when the form is submitted.
 
 ## Important Notes:
 
