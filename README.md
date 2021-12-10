@@ -60,12 +60,12 @@ Add in the needed state and reducer cases to hold and modify smurf error message
   - a boolean indicating if the app is loading
   - a string indicating a possible error message
 
-- [ ] Add in the arguments needed to complete a standard reducer function.
-- [ ] Add in a reducer case to accommodate the start of a smurf fetch.
-- [ ] Add in a reducer case to accommodate the successful smurf api fetch.
-- [ ] Add in a reducer cases to accommodate an error.
-- [ ] Add in a reducer case to accommodate adding a smurf (including the name, nickname, position, description and an internally generated id) into your smurf list.
-- [ ] Add in a reducer case that adds in a value to the error message.
+- [x] Add in the arguments needed to complete a standard reducer function.
+- [x] Add in a reducer case to accommodate the start of a smurf fetch.
+- [x] Add in a reducer case to accommodate the successful smurf api fetch.
+- [x] Add in a reducer cases to accommodate an error.
+- [x] Add in a reducer case to accommodate adding a smurf (including the name, nickname, position, description and an internally generated id) into your smurf list.
+- [x] Add in a reducer case that adds in a value to the error message.
 
 ### Complete index.js
 
@@ -124,9 +124,19 @@ Connect this component to the error state slice, setError and addSmurf actions. 
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. Add your answers below.
 
 1. What problem does the context API help solve?
+   Instead of just using the Top-down passing through props API will allow permissions to state with the app.
 
 2. In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
 
+Redux is used to manage data of our application. It makes it easier for us to manage state and data.
+We use reducers to handle state globally and also maintain it through action types which will give us back data.
+
+Store will grab the entire state tree in our application. Redux can only have one store in our application. When a store is created in Redux, we will have to specify the reducer.
+
+In React-Redux applications, when your Redux is a single source of truth, it means that the only way to change your data in UI is to dispatch redux action which will change state within redux reducer. And your React components will watch this reducer and if that reducer changes, then UI will change itself too. But never other way around, because Redux state is single source of truth.
+
 3. What does `redux-thunk` allow us to do? How does it change our `action-creators`?
+   Redux-thunk allows us to call the action creators that will give us back a function which will take the stored dispatch method as the argument. After, it will use it to dispatch the action after the API has been completed. So basically it will allow our synchronous flow to be transformed into an async chronous flow.
 
 4. What is your favorite state management system you've learned and this sprint? Please explain why!
+   I have really come to enjoy thunk in redux. It was hard at first but i now enjoy calling API in action creators.
