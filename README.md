@@ -52,6 +52,8 @@ In this project, you will build the reducer, actions and basic redux connects to
 
 ### Complete reducers/index.js
 
+(\*This has been completed\*\*\*)
+
 Add in the needed state and reducer cases to hold and modify smurf error messages, loading status and smurf data. **If at all possible, add in action cases one at a time, instead of all at once. Test your state connects and reducer cases as nessisary.**
 
 - [ ] Adds the following state values into the initialState:
@@ -68,6 +70,8 @@ Add in the needed state and reducer cases to hold and modify smurf error message
 - [x] Add in a reducer case that adds in a value to the error message.
 
 ### Complete index.js
+
+(\*This has been completed\*\*\*)
 
 Connect your application to reducer through redux with the thunk and logger middleware packages attached.
 
