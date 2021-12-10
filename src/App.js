@@ -1,26 +1,33 @@
 import React, { Component } from "react";
 
-import AddForm from './components/AddForm';
-import SmurfList from './components/SmurfList';
-import Header from './components/Header';
+import AddForm from "./components/AddForm";
+import SmurfList from "./components/SmurfList";
+import Header from "./components/Header";
+import { fetchSmurfs } from "./actions";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-const App = ()=> {
+const App = (props) => {
+  const { fetchSmurfs } = props;
+
+  useEffect(() => {
+    fetchSmurfs();
+  });
+
   return (
     <div className="App">
       <Header />
 
       <main>
-        <SmurfList/>
-        <AddForm/>
+        <SmurfList />
+        <AddForm />
       </main>
     </div>
   );
-}
+};
 
-export default App;
+export default connect(null, { fetchSmurfs })(App);
 
 //Task List:
 //1. Connect the fetchSmurfs actions to the App component.
